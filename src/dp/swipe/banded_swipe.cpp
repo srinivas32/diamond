@@ -76,8 +76,8 @@ struct Matrix
 	{
 		hgap_.resize(band + 1);
 		score_.resize(band);
-		std::fill(hgap_.begin(), hgap_.end(), _sv());
-		std::fill(score_.begin(), score_.end(), _sv());
+		//std::fill(hgap_.begin(), hgap_.end(), _sv());
+		//std::fill(score_.begin(), score_.end(), _sv());
 		
 	}
 	inline ColumnIterator begin(int offset, int col)
