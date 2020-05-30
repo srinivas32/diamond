@@ -93,7 +93,7 @@ set(DISPATCH_OBJECTS
 "src/search/collision.cpp"
 "src/search/stage1.cpp"
 "src/search/stage2.cpp"
-"src/tools/benchmark.cpp"
+# "src/tools/benchmark.cpp"
 "src/dp/swipe/swipe_wrapper.cpp"
 "src/util/tantan.cpp"
 "src/dp/scan_diags.cpp"
@@ -106,8 +106,8 @@ if(X86)
 #add_library(arch_sse4_1 OBJECT ${DISPATCH_OBJECTS})
 #add_library(arch_avx2 OBJECT ${DISPATCH_OBJECTS})
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
-	target_compile_options(arch_sse4_1 PUBLIC -DDISPATCH_ARCH=ARCH_SSE4_1 -DARCH_ID=1 -D__SSSE3__ -D__SSE4_1__ -D__POPCNT__)
-    target_compile_options(arch_avx2 PUBLIC -DDISPATCH_ARCH=ARCH_AVX2 -DARCH_ID=2 /arch:AVX2 -D__SSSE3__ -D__SSE4_1__ -D__POPCNT__)
+	#target_compile_options(arch_sse4_1 PUBLIC -DDISPATCH_ARCH=ARCH_SSE4_1 -DARCH_ID=1 -D__SSSE3__ -D__SSE4_1__ -D__POPCNT__)
+    #target_compile_options(arch_avx2 PUBLIC -DDISPATCH_ARCH=ARCH_AVX2 -DARCH_ID=2 /arch:AVX2 -D__SSSE3__ -D__SSE4_1__ -D__POPCNT__)
 else()
 	#target_compile_options(arch_sse4_1 PUBLIC -DDISPATCH_ARCH=ARCH_SSE4_1 -DARCH_ID=1 -mssse3 -mpopcnt -msse4.1)
     #target_compile_options(arch_avx2 PUBLIC -DDISPATCH_ARCH=ARCH_AVX2 -DARCH_ID=2 -mssse3 -mpopcnt -msse4.1 -msse4.2 -mavx -mavx2)

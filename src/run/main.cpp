@@ -54,7 +54,7 @@ void roc();
 void merge_tsv();
 
 void split();
-namespace Benchmark { DECL_DISPATCH(void, benchmark, ()) }
+// namespace Benchmark { DECL_DISPATCH(void, benchmark, ()) }
 namespace Util { namespace Algo { namespace UPGMA { void upgma(); } } }
 namespace Util { namespace Algo { namespace UPGMA_MC { void upgma(); } } }
 namespace Test { int run();
@@ -132,7 +132,7 @@ int main(int ac, const char* av[])
 			Test::simulate_seqs();
 			break;
 		case Config::benchmark:
-			Benchmark::benchmark();
+			//Benchmark::benchmark();
 			break;
 		case Config::split:
 			split();
