@@ -2,6 +2,8 @@ os:
 #  - linux
   - osx
 
+osx_image: xcode11.5
+
 language: c++
 
 #addons:

@@ -149,6 +149,7 @@ struct TargetBuffer
 	SeqVector seq_vector() const
 	{
 		alignas(32) _t s[CHANNELS];
+		std::fill(s, s + CHANNELS, SUPER_HARD_MASK);
 		for (int i = 0; i < active.size(); ++i) {
 			const int channel = active[i];
 			s[channel] = (*this)[channel];
