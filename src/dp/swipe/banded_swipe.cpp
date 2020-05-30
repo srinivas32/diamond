@@ -380,7 +380,7 @@ list<Hsp> swipe(
 	
 	//std::cerr << "CHANNELS=" << TargetIterator<Score>::CHANNELS << std::endl;
 	//std::cerr << "SIZE=" << sizeof(TargetIterator<Score>) << std::endl;
-	TargetIterator<Score> targets(subject_begin, subject_end, i1, qlen, d_begin);
+	::DISPATCH_ARCH::TargetIterator<Score> targets(subject_begin, subject_end, i1, qlen, d_begin);
 	Matrix dp(band, targets.cols);
 
 	const _sv open_penalty(static_cast<char>(score_matrix.gap_open() + score_matrix.gap_extend())),

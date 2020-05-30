@@ -16,14 +16,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ****/
 
-#ifndef TARGET_ITERATOR_H_
-#define TARGET_ITERATOR_H_
-
+#pragma once
 #include <stdint.h>
 #include <algorithm>
 #include "../dp.h"
 #include "../basic/value.h"
 #include "../../util/simd/vector.h"
+
+namespace DISPATCH_ARCH {
 
 template<typename _t>
 struct TargetIterator
@@ -192,4 +192,4 @@ struct TargetBuffer
 	const sequence *subject_begin;
 };
 
-#endif
+}
