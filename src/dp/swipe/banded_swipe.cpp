@@ -379,6 +379,7 @@ list<Hsp> swipe(
 #endif
 	
 	std::cerr << "CHANNELS=" << TargetIterator<Score>::CHANNELS << std::endl;
+	std::cerr << "SIZE=" << sizeof(TargetIterator<Score>) << std::endl;
 	TargetIterator<Score> targets(subject_begin, subject_end, i1, qlen, d_begin);
 	Matrix dp(band, targets.cols);
 
