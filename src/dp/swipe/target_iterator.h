@@ -35,11 +35,11 @@ struct TargetIterator
 	};
 
 	TargetIterator(vector<DpTarget>::const_iterator subject_begin, vector<DpTarget>::const_iterator subject_end, int i1, int qlen, int *d_begin) :
+		next(0),
 		n_targets(int(subject_end - subject_begin)),
 		cols(0),
 		subject_begin(subject_begin)
 	{
-		next = 0;
 		for (; next < std::min((int)CHANNELS, n_targets); ++next) {
 			const DpTarget &t = subject_begin[next];
 			pos[next] = i1 - (t.d_end - 1);

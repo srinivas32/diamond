@@ -79,7 +79,7 @@ endif()
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_ITERATOR_DEBUG_LEVEL=0)
 else()
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-implicit-fallthrough -Wreturn-type -Wno-unused -Wno-unused-parameter -fsanitize=address -fno-omit-frame-pointer")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-implicit-fallthrough -Wreturn-type -Wno-unused -Wno-unused-parameter -fsanitize=address -fno-omit-frame-pointer -mssse3 -mpopcnt -msse4.1")
 endif()
 
 include_directories(
