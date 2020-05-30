@@ -92,6 +92,7 @@ Arch init_arch() {
 
 Arch arch() {
 	static Arch a = Arch::None;
+	return Arch::Generic;
 	return a == Arch::None ? (a = init_arch()) : a;
 }
 
