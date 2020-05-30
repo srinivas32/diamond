@@ -225,7 +225,10 @@ struct Static_vector
 	}
 	void erase(int i)
 	{
-		memmove(&data[i], &data[i + 1], (--n - i)*sizeof(_t));
+		for (int j = i + 1; j < n; ++j)
+			data[j - 1] = data[j];
+		n--;
+		//memmove(&data[i], &data[i + 1], (--n - i)*sizeof(_t));
 	}
 private:
 	_t data[_n];
