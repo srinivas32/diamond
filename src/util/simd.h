@@ -82,4 +82,28 @@ struct Vector {};
 
 }}
 
+static inline __m128i _mm_set1(signed char v) {
+#ifdef __APPLE__
+	return _mm_set_epi8(v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v);
+#else
+	return _mm_set1_epi8(v);
+#endif
+}
+
+static inline __m128i _mm_set1(char v) {
+#ifdef __APPLE__
+	return _mm_set_epi8(v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v);
+#else
+	return _mm_set1_epi8(v);
+#endif
+}
+
+static inline __m128i _mm_set1(short v) {
+#ifdef __APPLE__
+	return _mm_set_epi16(v, v, v, v, v, v, v, v);
+#else
+	return _mm_set1_epi16(v);
+#endif
+}
+
 #endif

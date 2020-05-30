@@ -187,7 +187,7 @@ struct score_vector<int8_t>
 {
 
 	score_vector():
-		data_(_mm_set1_epi8(SCHAR_MIN))
+		data_(_mm_set1((signed char)SCHAR_MIN))
 	{}
 
 	explicit score_vector(__m128i data):
@@ -195,11 +195,11 @@ struct score_vector<int8_t>
 	{}
 
 	explicit score_vector(int8_t x):
-		data_(_mm_set1_epi8(x))
+		data_(_mm_set1(x))
 	{}
 
 	explicit score_vector(int x):
-		data_(_mm_set1_epi8(x))
+		data_(_mm_set1((signed char)x))
 	{}
 
 	explicit score_vector(const int8_t* s) :
@@ -214,9 +214,9 @@ struct score_vector<int8_t>
 	{
 		const __m128i* row = reinterpret_cast<const __m128i*>(&score_matrix.matrix8()[a << 5]);
 
-		__m128i high_mask = _mm_slli_epi16(_mm_and_si128(seq, _mm_set1_epi8('\x10')), 3);
+		__m128i high_mask = _mm_slli_epi16(_mm_and_si128(seq, _mm_set1('\x10')), 3);
 		__m128i seq_low = _mm_or_si128(seq, high_mask);
-		__m128i seq_high = _mm_or_si128(seq, _mm_xor_si128(high_mask, _mm_set1_epi8('\x80')));
+		__m128i seq_high = _mm_or_si128(seq, _mm_xor_si128(high_mask, _mm_set1('\x80')));
 
 		__m128i r1 = _mm_load_si128(row);
 		__m128i r2 = _mm_load_si128(row + 1);
@@ -252,7 +252,7 @@ struct score_vector<int8_t>
 	}
 
 	score_vector& operator++() {
-		data_ = _mm_adds_epi8(data_, _mm_set1_epi8(1));
+		data_ = _mm_adds_epi8(data_, _mm_set1((signed char)1));
 		return *this;
 	}
 
