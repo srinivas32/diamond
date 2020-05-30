@@ -72,12 +72,14 @@ struct Matrix
 		_sv *hgap_ptr_, *score_ptr_;
 	};
 	Matrix(int band, size_t cols):
+		hgap_(band+1),
+		score_(band),
 		band_(band)
 	{
 		//hgap_.resize(band + 1);
 		//score_.resize(band);
-		//std::fill(hgap_.begin(), hgap_.end(), _sv());
-		//std::fill(score_.begin(), score_.end(), _sv());
+		std::fill(hgap_.begin(), hgap_.end(), _sv());
+		std::fill(score_.begin(), score_.end(), _sv());
 		
 	}
 	inline ColumnIterator begin(int offset, int col)
@@ -87,7 +89,7 @@ struct Matrix
 	int band() const {
 		return band_;
 	}
-	static thread_local MemBuffer<_sv> hgap_, score_;
+	MemBuffer<_sv> hgap_, score_;
 private:
 	int band_;	
 };
@@ -250,8 +252,8 @@ private:
 
 };
 
-template<typename _sv> thread_local MemBuffer<_sv> Matrix<_sv>::hgap_;
-template<typename _sv> thread_local MemBuffer<_sv> Matrix<_sv>::score_;
+//template<typename _sv> thread_local MemBuffer<_sv> Matrix<_sv>::hgap_;
+//template<typename _sv> thread_local MemBuffer<_sv> Matrix<_sv>::score_;
 template<typename _sv> thread_local MemBuffer<_sv> TracebackMatrix<_sv>::hgap_;
 template<typename _sv> thread_local MemBuffer<_sv> TracebackMatrix<_sv>::score_;
 
