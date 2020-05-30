@@ -378,6 +378,7 @@ list<Hsp> swipe(
 	RangePartition<CHANNELS, Score> band_parts(band_offset, target_count, band);
 #endif
 	
+	std::cerr << "CHANNELS=" << TargetIterator<Score>::CHANNELS << std::endl;
 	TargetIterator<Score> targets(subject_begin, subject_end, i1, qlen, d_begin);
 	Matrix dp(band, targets.cols);
 
