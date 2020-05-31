@@ -244,18 +244,13 @@ struct TracebackMatrix
 		return ColumnIterator(&hgap_[offset], &score_[col*band_ + offset], &score_[(col + 1)*band_ + offset]);
 	}
 
-	static thread_local MemBuffer<_sv> hgap_, score_;
+	MemBuffer<_sv> hgap_, score_;
 
 private:
 
 	const size_t band_;
 
 };
-
-//template<typename _sv> thread_local MemBuffer<_sv> Matrix<_sv>::hgap_;
-//template<typename _sv> thread_local MemBuffer<_sv> Matrix<_sv>::score_;
-template<typename _sv> thread_local MemBuffer<_sv> TracebackMatrix<_sv>::hgap_;
-template<typename _sv> thread_local MemBuffer<_sv> TracebackMatrix<_sv>::score_;
 
 template<typename _sv, typename _traceback>
 struct MatrixTag
