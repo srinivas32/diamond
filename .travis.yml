@@ -1,10 +1,10 @@
 os:
   - linux
-  - osx
+#  - osx
 
 dist:
   - xenial
-  - trusty
+#- trusty
 
 language: c++
 
@@ -14,14 +14,14 @@ language: c++
 #      - gdb
 
 arch:
-  - amd64
-  - arm64
-  - ppc64le
+#  - amd64
+#  - arm64
+#  - ppc64le
   - s390x
 
 compiler:
   - g++
-  - clang
+#  - clang
 
 install: skip
 
@@ -32,4 +32,4 @@ script:
   - make
 #  - gdb --ex=r -return-child-result -batch -ex bt --args ./diamond test
 #  - lldb --batch --one-line r --one-line-on-crash bt -- ./diamond test
-  - ./diamond test
+  - ./diamond blastp -q ../astral40.fa -d ../astral40 -o out -c1 --log
