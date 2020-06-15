@@ -141,6 +141,7 @@ void DatabaseFile::close() {
 void DatabaseFile::read_header(InputFile &stream, ReferenceHeader &header)
 {
 	stream >> header;
+	std::cout << std::hex << header.magic_number << '\t' << ReferenceHeader().magic_number << std::endl;
 	if (header.magic_number != ReferenceHeader().magic_number)
 		throw Database_format_exception();
 }
@@ -450,8 +451,12 @@ bool DatabaseFile::is_diamond_db(const string &file_name) {
 	if (file_name == "-")
 		return false;
 	InputFile db_file(file_name);
-	uint64_t magic_number;
-	bool r = db_file.read(&magic_number, 1) == 1 && magic_number == ReferenceHeader::MAGIC_NUMBER;
+	uint64_t magic_number = 0;
+	try {
+		db_file >> magic_number;
+	}
+	catch (EndOfStream) {}
+	bool r = (magic_number == ReferenceHeader::MAGIC_NUMBER);
 	db_file.close();
 	return r;
 }
