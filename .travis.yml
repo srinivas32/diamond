@@ -1,25 +1,34 @@
 os:
-#  - linux
-  - osx
+  - linux
+#  - osx
+
+dist:
+  - trusty
 
 language: c++
 
-#addons:
-#  apt:
-#    packages:
-#      - gdb
+arch:
+#  - amd64
+#  - arm64
+#  - ppc64le
+  - s390x
+
+addons:
+  apt:
+    packages:
+      - gdb
 
 compiler:
-  - g++
-#  - clang
+#  - g++
+  - clang
 
 install: skip
 
 script:
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Release ..
+  - cmake -DCMAKE_BUILD_TYPE=Debug ..
   - make
-#  - gdb --ex=r -return-child-result -batch -ex bt --args ./diamond test
+  - gdb --ex=r -return-child-result -batch -ex bt --args ./diamond test
 #  - lldb --batch --one-line r --one-line-on-crash bt -- ./diamond test
-  - ./diamond test
+#  - ./diamond test
