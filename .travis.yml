@@ -3,7 +3,7 @@ os:
 #  - osx
 
 dist:
-  - xenial
+  - bionic
 
 language: c++
 
@@ -17,7 +17,8 @@ addons:
   apt:
     packages:
       - gdb
-      - libclang-common-3.8-dev
+      - libclang-common-6.0-dev
+#      - libclang-common-3.8-dev
 
 compiler:
 #  - g++
