@@ -211,6 +211,7 @@ Config::Config(int argc, const char **argv, bool check_io)
 		("band", 0, "band for dynamic programming computation", padding)
 		("shapes", 's', "number of seed shapes (0 = all available)", shapes)
 		("shape-mask", 0, "seed shapes", shape_mask)
+		("xdrop", 'x', "xdrop for ungapped alignment", ungapped_xdrop, 12.3)
 		("rank-ratio", 0, "include subjects within this ratio of last hit", rank_ratio, -1.0)
 		("culling-overlap", 0, "minimum range overlap with higher scoring hit to delete a hit (default=50%)", inner_culling_overlap, 50.0)
 		("taxon-k", 0, "maximum number of targets to report per species", taxon_k, (uint64_t)0)
@@ -235,7 +236,6 @@ Config::Config(int argc, const char **argv, bool check_io)
 	Options_group deprecated_options("");
 	deprecated_options.add()
 		("window", 'w', "window size for local hit search", window)
-		("xdrop", 'x', "xdrop for ungapped alignment", ungapped_xdrop, 12.3)
 		("ungapped-score", 0, "minimum alignment score to continue local extension", min_ungapped_score)
 		("hit-band", 0, "band for hit verification", hit_band)
 		("hit-score", 0, "minimum score to keep a tentative alignment", min_hit_score)
@@ -350,7 +350,7 @@ Config::Config(int argc, const char **argv, bool check_io)
 		("ext", 0, "", ext)
 		("full-sw-len", 0, "", full_sw_len);
 	
-	parser.add(general).add(makedb).add(cluster).add(aligner).add(advanced).add(view_options).add(getseq_options).add(hidden_options);
+	parser.add(general).add(makedb).add(cluster).add(aligner).add(advanced).add(view_options).add(getseq_options).add(hidden_options).add(deprecated_options);
 	parser.store(argc, argv, command);
 
 	if (long_reads) {
