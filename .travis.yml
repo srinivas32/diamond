@@ -8,10 +8,10 @@ dist:
 
 language: c++
 
-#addons:
-#  apt:
-#    packages:
-#      - gdb
+addons:
+  apt:
+    packages:
+      - gdb
 
 arch:
 #  - amd64
@@ -28,8 +28,8 @@ install: skip
 script:
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Release ..
+  - cmake -DCMAKE_BUILD_TYPE=Debug ..
   - make
-#  - gdb --ex=r -return-child-result -batch -ex bt --args ./diamond test
+  - gdb --ex=r -return-child-result -batch -ex bt --args ./diamond test
 #  - lldb --batch --one-line r --one-line-on-crash bt -- ./diamond test
-  - ./diamond blastp -q ../astral40.fa -d ../astral40.dmnd -o out -c1
+#  - ./diamond blastp -q ../astral40.fa -d ../astral40.dmnd -o out -c1
