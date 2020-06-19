@@ -1,9 +1,6 @@
 os:
-  - linux
+#  - linux
   - osx
-
-dist:
-  - trusty
 
 language: c++
 
@@ -12,15 +9,9 @@ language: c++
 #    packages:
 #      - gdb
 
-arch:
-  - amd64
-  - arm64
-  - ppc64le
-  - s390x
-
 compiler:
   - g++
-  - clang
+#  - clang
 
 install: skip
 
