@@ -1,10 +1,10 @@
 os:
-  - linux
+#  - linux
   - osx
 
-dist:
+#dist:
 #  - xenial
-  - trusty
+#  - trusty
 
 language: c++
 

@@ -25,23 +25,7 @@ using std::vector;
 namespace Test {
 
 const vector<TestCase> test_cases = {
-{ "blastp (default)", "blastp -p1" },
-{ "blastp (multithreaded)", "blastp -p4" },
-{ "blastp (blocked)", "blastp -c1 -b0.00002 -p4" },
-{ "blastp (more-sensitive)", "blastp --more-sensitive -c1 -p4" },
-{ "blastp (very-sensitive)", "blastp --very-sensitive -c1 -p4" },
-{ "blastp (ultra-sensitive)", "blastp --ultra-sensitive -c1 -p4" },
-{ "blastp (max-hsps)", "blastp --more-sensitive -c1 -p4 --max-hsps 0" },
-{ "blastp (target-parallel)", "blastp --more-sensitive -c1 -p4 --query-parallel-limit 1" },
-{ "blastp (query-indexed)", "blastp --more-sensitive -c1 -p4 --algo 1" },
-{ "blastp (comp-based-stats)", "blastp --more-sensitive -c1 -p4 --comp-based-stats 0" },
 { "blastp (target seqs)", "blastp -k3 -c1 -p4" },
-{ "blastp (top)", "blastp --top 10 -p4"},
-{ "blastp (evalue)", "blastp -e10000 --more-sensitive -c1 -p4" },
-{ "blastp (blosum50)", "blastp --matrix blosum50 -p4"},
-{ "blastp (pairwise format)", "blastp -c1 -f0 -p4" },
-{ "blastp (XML format)", "blastp -c1 -f xml -p4" },
-{ "blastp (PAF format)", "blastp -c1 -f paf -p1" }
 };
 
 const vector<uint64_t> ref_hashes = {
