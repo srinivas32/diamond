@@ -88,7 +88,8 @@ const char* Blast_tab_format::field_str[] = {
 	"qstrand",		// 57
 	"cigar",		// 58
 	"skingdoms",	// 59
-	"sphylums"		// 60
+	"sphylums",		// 60
+	"full_qseq_mate" // 61
 };
 
 const char* Blast_tab_format::field_desc[] = {
@@ -185,6 +186,8 @@ Blast_tab_format::Blast_tab_format() :
 			config.use_lazy_dict = true;
 		if (j == 49 || j == 53)
 			config.store_query_quality = true;
+		if (j == 61)
+			needs_paired_end_info = true;
 	}
 }
 
@@ -414,6 +417,11 @@ void Blast_tab_format::print_match(const Hsp_context& r, const Metadata &metadat
 		case 60: {
 			const set<unsigned> tax_id = metadata.taxon_nodes->rank_taxid((*metadata.taxon_list)[r.orig_subject_id], Rank::phylum);
 			print_taxon_names(tax_id.begin(), tax_id.end(), metadata, out);
+			break;
+		}
+		case 61: {
+			unsigned mate = r.query_id % 2, mate_id = mate == 0 ? r.query_id + 1 : r.query_id - 1;
+			query_source_seqs::get()[mate_id].print(out, input_value_traits);
 			break;
 		}
 		default:

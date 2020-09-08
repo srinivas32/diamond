@@ -37,7 +37,8 @@ struct Output_format
 		code(code),
 		needs_taxon_id_lists(false),
 		needs_taxon_nodes(false),
-		needs_taxon_scientific_names(false)
+		needs_taxon_scientific_names(false),
+		needs_paired_end_info(false)
 	{}
 	virtual void print_query_intro(size_t query_num, const char *query_name, unsigned query_len, TextBuffer &out, bool unaligned) const
 	{}
@@ -58,7 +59,7 @@ struct Output_format
 		return code;
 	}
 	unsigned code;
-	bool needs_taxon_id_lists, needs_taxon_nodes, needs_taxon_scientific_names, needs_taxon_ranks;
+	bool needs_taxon_id_lists, needs_taxon_nodes, needs_taxon_scientific_names, needs_taxon_ranks, needs_paired_end_info;
 	enum { daa, blast_tab, blast_xml, sam, blast_pairwise, null, taxon, paf, bin1 };
 };
 
